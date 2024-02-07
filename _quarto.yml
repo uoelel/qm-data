@@ -1,0 +1,31 @@
+project:
+  type: website
+  output-dir: docs
+  execute-dir: project
+  render:
+    - "*.qmd"
+    - "!data/prep-data.qmd"
+  resources:
+    - "data/"
+
+website:
+  title: "qm-data"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: data.qmd
+        text: Data
+
+format:
+  html:
+    theme: united
+    css: styles.css
+    toc: true
+    df-print: paged
+    number-sections: true
+
+callout-icon: false
+
+editor: visual
+

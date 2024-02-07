@@ -1,0 +1,142 @@
+---
+title: "Prepare data"
+author: "Stefano Coretta"
+editor: visual
+---
+
+```{r}
+#| label: setup
+
+library(tidyverse)
+```
+
+## Coretta 2022
+
+```{r}
+#| label: glot-status
+
+languages <- read_csv("https://raw.githubusercontent.com/glottolog/glottolog-cldf/c8eefe82b4c87f3c566a8e5181bacf714661e18e/cldf/languages.csv")
+values <- read_csv("https://raw.githubusercontent.com/glottolog/glottolog-cldf/c8eefe82b4c87f3c566a8e5181bacf714661e18e/cldf/values.csv")
+
+glot_status <- values %>%
+  filter(Parameter_ID == "aes") %>%
+  mutate(
+    status = str_remove(Code_ID, "aes-"),
+    status = factor(status, levels = c("not_endangered", "threatened", "shifting", "moribund", "nearly_extinct", "extinct"))
+  ) %>%
+  left_join(y = languages, by = c("Language_ID" = "ID"))
+
+dir.create("./data/coretta2022/", showWarnings = FALSE)
+saveRDS(glot_status, "./data/coretta2022/glot_status.rds")
+
+# glot_med <- values %>%
+#   filter(Parameter_ID == "med") %>%
+#   mutate(MED = str_remove(Code_ID, "med-")) %>%
+#   left_join(y = languages, by = c("Language_ID" = "ID"))
+```
+
+## Coretta 2018
+
+```{r}
+#| label: formants
+
+f_ita_pol <- read_csv("https://raw.githubusercontent.com/stefanocoretta/coretta2018itapol/master/data-raw/aggregated/formants-series.csv") %>%
+  select(everything(), gender = sex)
+
+dir.create("./data/coretta2018/", showWarnings = FALSE)
+write_csv(f_ita_pol, "data/coretta2018/formants.csv")
+
+```
+
+```{r}
+#| label: token-measures
+
+f_mid <- f_ita_pol %>%
+  filter(time == 5) %>%
+  select(-time)
+
+token_measures <- read_csv("https://raw.githubusercontent.com/stefanocoretta/coretta2018itapol/master/data-raw/aggregated/token-measures.csv") %>%
+  select(everything(), gender = sex) %>%
+  left_join(y = f_mid)
+
+write_csv(token_measures, "./data/coretta2018/token-measures.csv")
+
+```
+
+## Cameron 2020
+
+Data from *A Cross-Cultural Analysis of Early Prelinguistic Gesture Development and Its Relationship to Language Development*.
+
+```{r}
+#| label: gestures
+
+gestures <- read_csv("https://raw.githubusercontent.com/stefanocoretta/infant-gestures/master/data/gestures.csv") %>%
+  mutate(id = as.numeric(as.factor(paste(dyad, task, gesture))))
+
+dir.create("data/cameron2020/", showWarnings = FALSE)
+write_csv(gestures, "data/cameron2020/gestures.csv")
+```
+
+## Winter 2020
+
+```{r}
+#| label: polite
+
+polite <- read_csv("https://raw.githubusercontent.com/learnB4SS/learnB4SS/main/data-raw/polite.csv") %>%
+  arrange(index) %>%
+  select(-index, -years_in_ger)
+
+dir.create("data/winter2012/", showWarnings = FALSE)
+write_csv(polite, "data/winter2012/polite.csv")
+```
+
+## Tucker 2019: MALD 1.1
+
+```{r}
+#| label: mald
+
+mald_file <- "./data/tucker2019/MALD1_1_AllData.Rda"
+if (file.exists(mald_file)) {
+  cli::cli_alert_success("MALD file found!")
+  load(mald_file)
+} else {
+  cli::cli_alert_warning("MALD file not found! Downloading...")
+  dir.create("./data/tucker2019/", showWarnings = FALSE)
+  download.file(
+    "https://era.library.ualberta.ca/items/3344343b-2b4a-4b8c-af8e-8bd829c76472/view/eada02c5-6259-4225-8204-13ce86e1cd2d/MALD1_1_AllData.Rda",
+   mald_file 
+  )
+  load(mald_file)
+}
+
+set.seed(943874)
+
+subj <- sample(unique(dat$Subject), 50)
+
+mald_1_1 <- dat %>%
+  filter(Subject %in% subj, RT > 0) %>%
+  select(Subject, Item, IsWord, PhonLev, RT, ACC) %>%
+  mutate(
+    IsWord = factor(IsWord, levels = c("TRUE", "FALSE")),
+    ACC = ifelse(ACC, "correct", "incorrect"),
+    ACC = factor(ACC, levels = c("incorrect", "correct")),
+    RT_log = log(RT)
+  ) %>%
+  group_by(Subject) %>%
+  slice_sample(n = 100) %>%
+  ungroup()
+
+saveRDS(mald_1_1, "data/tucker2019/mald_1_1.rds")
+```
+
+## Sluckin 2022
+
+```{r}
+#| label: everywhere-loc
+
+everywhere_loc <- read_csv("https://osf.io/download/vaujp/?view_only=edba6a2255044ce6af6a519b85c9e65f") %>%
+  select(-(Simple:Pass))
+
+dir.create("./data/sluckin2022/")
+write_csv(everywhere_loc, file = "./data/sluckin2022/everywhere-loc.csv")
+```

@@ -1,0 +1,120 @@
+---
+title: "The phonetic profile of Korean formal and informal speech registers"
+author: 
+  - Bodo Winter
+  - Sven Grawunder
+year: 2012
+languages: "Korean"
+population: "Korean"
+doi: "10.1016/j.wocn.2012.08.006"
+abstract: |
+  In this exploratory sociophonetic study, we investigated the properties of formal and informal speech registers in Korean. We found that in formal speech, Korean male and female speakers lowered their average fundamental frequency and pitch range. The acoustic signal furthermore exhibited overall less variability, as evidenced by decreased fundamental frequency and intensity standard deviations, and decreased period and amplitude perturbations. Differences in speech registers affected Harmonics-to-Noise-ratio and the difference between the first and second harmonic as well, suggesting breathiness-related changes, and the speech was slower and included more non-lexical fillers such as ah and oh. Unexpectedly, formality also affected breathing patterns, leading to a noticeable increase in the amount of loud “hissing” breath intakes in formal speech. We thus show that a variety of different means of vocal expression play a role in signaling formality in Korean. Further, we outline the implications of this study for phonetic theory and discuss our results with respect to the Frequency Code and research on clear speech.
+---
+
+
+
+## Description
+
+`subject`
+
+:   Subject unique identifier (categorical).
+
+`gender`
+
+:   Gender of subject (categorical).
+
+`birthplace`
+
+:   Birth place of subject (categorical).
+
+`musicstudent`
+
+:   Does the subject have music training? (binary: yes, no)
+
+`scenario`
+
+:   Unique identifier of different items.
+
+`task`
+
+:   Task type (categorical: `not` = mailbox task vs `dct` = discourse completion task). In the mailbox task people left a note on somebody's mailbox, while in the discourse completion task they were prompted to role-play the start of a conversation.
+
+`attitude`
+
+:   Attitude (binary: `pol` polite vs `inf` informal).
+
+`total_duration`
+
+:   Total duration of utterances in seconds (numeric).
+
+`articulation_rate`
+
+:   Number of syllables per second (numeric).
+
+`f0mn`
+
+:   Mean fundamental frequency (f0) (numeric).
+
+`f0sd`
+
+:   Stadard deviation of fundamental frequency (numeric).
+
+`f0range`
+
+:   Minimum and maximum fundamental frequency (numeric).
+
+`inmn`
+
+:   Mean intensity (numeric).
+
+`insd`
+
+:   Standard deviation of intensity (numeric).
+
+`inrange`
+
+:   Minimum and maximum fundamental frequency (numeric).
+
+`shimmer`
+
+:   Local shimmer (likewise normalized amplitude difference of consecutive periods) (numeric).
+
+`jitter`
+
+:   Local jitter (bsolute period-to-period difference divided by the average period) (numeric).
+
+`HNRmn`
+
+:   Mean Harmonics-to-Noise Ratio (numeric).
+
+`H1H2`
+
+:   Difference between first and second harmonic (H1-H2) (numeric).
+
+`breath_count`
+
+:   Number of audible breath intakes (count).
+
+`filler_count`
+
+:   Number of oral fillers like "oh/ah" (count).
+
+`hiss_count`
+
+:   Number of noisy breath intakes (count).
+
+`nasal_count`
+
+:   Number of nasal fillers like "mh/nh" (count).
+
+`sil_count`
+
+:   Number of silent pauses (count).
+
+`ya_count`
+
+:   Number of occurences of interjection "ya" (informal) (count).
+
+`yey_count`
+
+:   Number of occurences of interjection "yey" (polite) (count).

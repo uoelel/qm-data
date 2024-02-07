@@ -1,0 +1,5 @@
+---
+title: "Data for Quantitative Methods in Linguistics"
+---
+
+This website contains a curated list of data tables (aka tabular, rectangular, or spreadsheet data) from linguistic studies, which can be used in courses of statistics, quantitative methods and data analysis.

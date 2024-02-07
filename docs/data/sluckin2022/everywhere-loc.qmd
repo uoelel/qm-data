@@ -1,0 +1,13 @@
+---
+title: "'Everywhere here can say this': The English locative impersonal"
+author:
+  - Sluckin, Benjamin L.
+  - Itamar Kastner
+year: 2022
+languages: "English"
+population: "British"
+url: "https://ling.auf.net/lingbuzz/006708"
+abstract: |
+  For many speakers of English, locative *everywhere* can be used instead of the universal pronoun *everyone* in certain contexts, to denote a generic or impersonal set of individuals. This paper documents "impersonal *everywhere*" for the first time, applying a range of syntactic tests to determine its synchronic status. Based on a large-scale acceptability study, we find that it requires overt reference to a large location, as in *everywhere on the coast*. The results further indicate that UK speakers are more accepting of it than US speakers, in particular younger UK speakers. We discuss the grammatical properties of this construction, how it might have arisen (from variationist and diachronic perspectives), and possible typological correlates – all outlining a range of questions for future study on this understudied variant.
+---
+

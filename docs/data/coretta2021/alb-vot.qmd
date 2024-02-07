@@ -1,0 +1,14 @@
+---
+title: "Albanian Voice Onset Time"
+author: 
+  - "Stefano Coretta"
+  - "Josiane Riverin-Coutlée"
+  - "Enkeleida Kapia"
+  - "Stephen Nichols"
+year: 2021
+doi: "10.1017/S0025100322000044"
+url: "https://osf.io/vry3h/"
+languages: "Albanian"
+population: "Albanian"
+---
+

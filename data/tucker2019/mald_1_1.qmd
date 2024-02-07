@@ -1,0 +1,41 @@
+---
+title: "Massive Auditory Lexical Decision 1.1"
+author: Tucker, Benjamin V.
+year: 2021
+languages: "English"
+population: "English"
+doi: "10.7939/r3-kh0r-r116"
+url: "https://osf.io/sa37y/"
+description: |
+  This is an updated version of the MALD dataset. This new dataset almost doubles the total number of participants in the dataset, providing more responses per item. We have also updated the item data set to include a calculation of the phonotactic probability of all words and pseudowords and the temporal uniqueness point of the words and pseudowords
+---
+
+## Description
+
+`Subject`
+
+:   Subject unique identifier.
+
+`Item`
+
+:   Word.
+
+`IsWord`
+
+:   Whether it is a real word or a nonce word.
+
+`PhonLev`
+
+:   Mean phoneme-level Levenshtein distance.
+
+`RT`
+
+:   Reaction times (ms).
+
+`ACC`
+
+:   Accuracy of lexical decision.
+
+`RT_log`
+
+:   Logged reaction times.

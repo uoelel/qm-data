@@ -1,0 +1,58 @@
+---
+title: "Second language users exhibit shallow morphological processing"
+author:
+  - Song, Y.
+  - Do, Y.
+  - Thompson, A.
+  - Waegemaekers, E.
+  - Lee, J.
+languages: "English"
+population: ["English", "Chinese"]
+year: 2020
+doi: "10.1017/S0272263120000170"
+url: "https://osf.io/sa37y/"
+abstract: |
+  The present study tests the Shallow Structure Hypothesis (SSH), which claims that compared to L1 processing, L2 language processing generally underuses grammatical information, prioritizing nongrammatical information. Specifically, this cross-modal priming study tests SSH at the level of morphology, investigating whether late advanced L2 learners construct hierarchically structured representations for trimorphemic derived words during real-time processing as native speakers do. Our results support SSH. In lexical decision on English trimorphemic words (e.g., *unkindness* or [[un-[kind]]-ness]), L1 recognition of the targets was facilitated by their bimorphemic morphological-structural constituent primes (e.g., *unkind*), but not by their bimorphemic nonconstituent primes (e.g., *kindness*), which were only semantically and formally related to the target. In contrast, L2 recognition was equally facilitated by both constituent and nonconstituent primes. These results suggest that unlike L1 processing, L2 processing of multimorphemic words is not mainly guided by detailed morphological structure, overrelying on nonstructural information.
+---
+
+## Description
+
+`Group`
+
+:   Participant group (`L1`, `L2`).
+
+`ID`
+
+:   Subject unique identifier.
+
+`List`
+
+:   Word list.
+
+`Target`
+
+:   Target word.
+
+`RT`
+
+:   Reaction time (ms).
+
+`RT_log`
+
+:   Logged reaction time.
+
+`Critical_Filler`
+
+:   Whether the trial is a `critical` or a `filler` trial.
+
+`Word_Nonword`
+
+:   Whether the word is a real `word` or a nonce word (only `word` is present in the data).
+
+`Relation_type`
+
+:   Whether the relation type is `Unrelated`, `Constituent`, or `NonConstituent`.
+
+`Branching`
+
+:   Whether the trial word is `Left`-branching or `Right`-branching.

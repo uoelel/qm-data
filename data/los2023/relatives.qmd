@@ -1,0 +1,8 @@
+---
+title: "V2-Relatives in Old English"
+author: "Bettelou Los, Stefano Coretta"
+year: 2023
+url: "https://github.com/stefanocoretta/aelfric-relatives"
+languages: "Old English"
+---
+

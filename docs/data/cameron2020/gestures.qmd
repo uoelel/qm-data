@@ -1,0 +1,17 @@
+---
+title: "A Cross-Cultural Analysis of Early Prelinguistic Gesture Development and Its Relationship to Language Development"
+author:
+  - Thea Cameron-Faulkner
+  - Nivedita Malik
+  - Circle Steele
+  - Stefano Coretta
+  - Ludovica Serratrice
+  - Elena Lieven
+year: 2020
+population: ["Cantonese", "Bangladeshi", "British"]
+doi: "10.1111/cdev.13406"
+url: "https://github.com/stefanocoretta/infant-gestures"
+abstract: |
+  Many Western industrialized nations have high levels of ethnic diversity but to date there are very few studies which investigate prelinguistic and early language development in infants from ethnic minority backgrounds. This study tracked the development of infant communicative gestures from 10 to 12 months (n = 59) in three culturally distinct groups in the United Kingdom and measured their relationship, along with maternal utterance frequency and responsiveness, to vocabulary development at 12 and 18 months. No significant differences were found in infant gesture development and maternal responsiveness across the groups, but relationships were identified between gesture, maternal responsiveness, and vocabulary development.
+---
+

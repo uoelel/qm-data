@@ -1,0 +1,81 @@
+---
+title: "Glottolog 4.6 data: Agglomerated Endangerment Status"
+author: "Stefano Coretta, Harald Hammarström, Robert Forkel, Martin Haspelmath, Sebastian Bank"
+year: 2022
+doi: "10.1017/S0025100322000044"
+url: "https://osf.io/vry3h/"
+---
+
+## Description
+
+`ID`
+
+:   Primary key.
+
+`Language_ID`
+
+:   Reference to `languages$ID`.
+
+`Parameter_ID`
+
+:   Parameter ID.
+
+`Value`
+
+:   Parameter value.
+
+`Code_ID`
+
+:   Code ID.
+
+`Comment`
+
+:   Comment.
+
+`Source`
+
+:   Source reference.
+
+`codeReference`
+
+:   
+
+`status`
+
+:   Agglomerate Endangerment Status.
+
+`Name`
+
+:   Name of the language.
+
+`Macroarea`
+
+:   Geographic macro-area.
+
+`Latitude`
+
+:   Latitude.
+
+`Longitude`
+
+:   Longitude.
+
+`Glottocode`
+
+:   Glottocode.
+
+`ISO639P3code`
+
+:   ISO639-3 code.
+
+`Countries`
+
+:   Countries where the language is spoken.
+
+`Family_ID`
+
+:   Family ID.
+
+`Language_ID.y`
+
+:   Language ID.

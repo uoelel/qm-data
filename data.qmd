@@ -1,0 +1,11 @@
+---
+title: "Data"
+listing:
+  type: table
+  contents: data
+  fields: [year, title, author, languages, population]
+  sort: ["year", "title"]
+format: 
+  html:
+    page-layout: full
+---
