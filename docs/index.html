@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -66,7 +68,65 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-year','listing-title','listing-author','listing-languages','listing-population',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -92,10 +152,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./data.html"> 
-<span class="menu-text">Data</span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -104,14 +160,14 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -120,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -136,7 +192,301 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-year" data-direction="asc">
+          year
+        </option>
+         <option value="listing-title-sort" data-direction="asc">
+          title
+        </option>
+         <option value="listing-author" data-direction="asc">
+          author
+        </option>
+         <option value="listing-languages" data-direction="asc">
+          languages
+        </option>
+         <option value="listing-population" data-direction="asc">
+          population
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+<a class="sort" data-sort="listing-year" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">year</a>
+</th>
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">title</a>
+</th>
+<th>
+<a class="sort" data-sort="listing-author" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">author</a>
+</th>
+<th>
+<a class="sort" data-sort="listing-languages" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">languages</a>
+</th>
+<th>
+<a class="sort" data-sort="listing-population" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">population</a>
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-file-modified-sort="1706807146736" data-listing-reading-time-sort="1" data-listing-word-count-sort="104" data-listing-title-sort="The KEY to the ROCK: Near-homophony in nonnative visual word recognition" data-listing-filename-sort="key-rock.qmd">
+<td>
+<span class="listing-year">2009</span>
+</td>
+<td>
+<a href="./data/ota2009/key-rock.html" class="title listing-title">The KEY to the ROCK: Near-homophony in nonnative visual word recognition</a>
+</td>
+<td>
+<span class="listing-author">Mitsuhiko Ota, Robert J. Hartsuiker, Sara L. Haywood</span>
+</td>
+<td>
+<span class="listing-languages">English</span>
+</td>
+<td>
+<span class="listing-population">Japanese</span>
+</td>
+</tr>
+<tr data-index="1" data-listing-file-modified-sort="1707305174325" data-listing-reading-time-sort="2" data-listing-word-count-sort="251" data-listing-title-sort="The phonetic profile of Korean formal and informal speech registers" data-listing-filename-sort="polite.qmd">
+<td>
+<span class="listing-year">2012</span>
+</td>
+<td>
+<a href="./data/winter2012/polite.html" class="title listing-title">The phonetic profile of Korean formal and informal speech registers</a>
+</td>
+<td>
+<span class="listing-author">Bodo Winter, Sven Grawunder</span>
+</td>
+<td>
+<span class="listing-languages">Korean</span>
+</td>
+<td>
+<span class="listing-population">Korean</span>
+</td>
+</tr>
+<tr data-index="2" data-listing-file-modified-sort="1706807112950" data-listing-reading-time-sort="1" data-listing-word-count-sort="55" data-listing-title-sort="Shaking Takete and Flowing Maluma. Non-Sense Words Are Associated with Motion Patterns" data-listing-filename-sort="takete_maluma.qmd">
+<td>
+<span class="listing-year">2016</span>
+</td>
+<td>
+<a href="./data/koppensteiner2016/takete_maluma.html" class="title listing-title">Shaking Takete and Flowing Maluma. Non-Sense Words Are Associated with Motion Patterns</a>
+</td>
+<td>
+<span class="listing-author">Markus Koppensteiner, Pia Stephan, Johannes Paul, Michael Jäschke</span>
+</td>
+<td>
+<span class="listing-languages">&nbsp;</span>
+</td>
+<td>
+<span class="listing-population">English</span>
+</td>
+</tr>
+<tr data-index="3" data-listing-file-modified-sort="1706807352639" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Taste and smell words form an affectively loaded and emotionally flexible part of the English lexicon" data-listing-filename-sort="senses_valence.qmd">
+<td>
+<span class="listing-year">2016</span>
+</td>
+<td>
+<a href="./data/winter2016/senses_valence.html" class="title listing-title">Taste and smell words form an affectively loaded and emotionally flexible part of the English lexicon</a>
+</td>
+<td>
+<span class="listing-author">Bodo Winter</span>
+</td>
+<td>
+<span class="listing-languages">English</span>
+</td>
+<td>
+<span class="listing-population">English</span>
+</td>
+</tr>
+<tr data-index="4" data-listing-file-modified-sort="1706806967372" data-listing-reading-time-sort="3" data-listing-word-count-sort="401" data-listing-title-sort="Acoustics and articulatory durational measures of Italian and Polish" data-listing-filename-sort="token-measures.qmd">
+<td>
+<span class="listing-year">2018</span>
+</td>
+<td>
+<a href="./data/coretta2018/token-measures.html" class="title listing-title">Acoustics and articulatory durational measures of Italian and Polish</a>
+</td>
+<td>
+<span class="listing-author">Stefano Coretta</span>
+</td>
+<td>
+<span class="listing-languages">Italian, Polish</span>
+</td>
+<td>
+<span class="listing-population">Italian, Polish</span>
+</td>
+</tr>
+<tr data-index="5" data-listing-file-modified-sort="1706806984685" data-listing-reading-time-sort="1" data-listing-word-count-sort="129" data-listing-title-sort="Formant trajectories in Italian and Polish" data-listing-filename-sort="formants.qmd">
+<td>
+<span class="listing-year">2018</span>
+</td>
+<td>
+<a href="./data/coretta2018/formants.html" class="title listing-title">Formant trajectories in Italian and Polish</a>
+</td>
+<td>
+<span class="listing-author">Stefano Coretta</span>
+</td>
+<td>
+<span class="listing-languages">Italian, Polish</span>
+</td>
+<td>
+<span class="listing-population">Italian, Polish</span>
+</td>
+</tr>
+<tr data-index="6" data-listing-file-modified-sort="1706806903438" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="A Cross-Cultural Analysis of Early Prelinguistic Gesture Development and Its Relationship to Language Development" data-listing-filename-sort="gestures.qmd">
+<td>
+<span class="listing-year">2020</span>
+</td>
+<td>
+<a href="./data/cameron2020/gestures.html" class="title listing-title">A Cross-Cultural Analysis of Early Prelinguistic Gesture Development and Its Relationship to Language Development</a>
+</td>
+<td>
+<span class="listing-author">Thea Cameron-Faulkner, Nivedita Malik, Circle Steele, Stefano Coretta, Ludovica Serratrice, Elena Lieven</span>
+</td>
+<td>
+<span class="listing-languages">&nbsp;</span>
+</td>
+<td>
+<span class="listing-population">Cantonese, Bangladeshi, British</span>
+</td>
+</tr>
+<tr data-index="7" data-listing-file-modified-sort="1706807221665" data-listing-reading-time-sort="1" data-listing-word-count-sort="83" data-listing-title-sort="Second language users exhibit shallow morphological processing" data-listing-filename-sort="shallow.qmd">
+<td>
+<span class="listing-year">2020</span>
+</td>
+<td>
+<a href="./data/song2020/shallow.html" class="title listing-title">Second language users exhibit shallow morphological processing</a>
+</td>
+<td>
+<span class="listing-author">Song, Y., Do, Y., Thompson, A., Waegemaekers, E., Lee, J.</span>
+</td>
+<td>
+<span class="listing-languages">English</span>
+</td>
+<td>
+<span class="listing-population">English, Chinese</span>
+</td>
+</tr>
+<tr data-index="8" data-listing-file-modified-sort="1706807087407" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Albanian Voice Onset Time" data-listing-filename-sort="alb-vot.qmd">
+<td>
+<span class="listing-year">2021</span>
+</td>
+<td>
+<a href="./data/coretta2021/alb-vot.html" class="title listing-title">Albanian Voice Onset Time</a>
+</td>
+<td>
+<span class="listing-author">Stefano Coretta, Josiane Riverin-Coutlée, Enkeleida Kapia, Stephen Nichols</span>
+</td>
+<td>
+<span class="listing-languages">Albanian</span>
+</td>
+<td>
+<span class="listing-population">Albanian</span>
+</td>
+</tr>
+<tr data-index="9" data-listing-file-modified-sort="1706807262806" data-listing-reading-time-sort="1" data-listing-word-count-sort="43" data-listing-title-sort="Massive Auditory Lexical Decision 1.1" data-listing-filename-sort="mald_1_1.qmd">
+<td>
+<span class="listing-year">2021</span>
+</td>
+<td>
+<a href="./data/tucker2019/mald_1_1.html" class="title listing-title">Massive Auditory Lexical Decision 1.1</a>
+</td>
+<td>
+<span class="listing-author">Tucker, Benjamin V.</span>
+</td>
+<td>
+<span class="listing-languages">English</span>
+</td>
+<td>
+<span class="listing-population">English</span>
+</td>
+</tr>
+<tr data-index="10" data-listing-file-modified-sort="1706807165556" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="The role of relevance for scalar diversity" data-listing-filename-sort="si.qmd">
+<td>
+<span class="listing-year">2021</span>
+</td>
+<td>
+<a href="./data/pankratz2021/si.html" class="title listing-title">The role of relevance for scalar diversity</a>
+</td>
+<td>
+<span class="listing-author">Elizabeth Pankratz, Bob van Tiel</span>
+</td>
+<td>
+<span class="listing-languages">English</span>
+</td>
+<td>
+<span class="listing-population">English</span>
+</td>
+</tr>
+<tr data-index="11" data-listing-file-modified-sort="1706807181425" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="'Everywhere here can say this': The English locative impersonal" data-listing-filename-sort="everywhere-loc.qmd">
+<td>
+<span class="listing-year">2022</span>
+</td>
+<td>
+<a href="./data/sluckin2022/everywhere-loc.html" class="title listing-title">‘Everywhere here can say this’: The English locative impersonal</a>
+</td>
+<td>
+<span class="listing-author">Sluckin, Benjamin L., Itamar Kastner</span>
+</td>
+<td>
+<span class="listing-languages">English</span>
+</td>
+<td>
+<span class="listing-population">British</span>
+</td>
+</tr>
+<tr data-index="12" data-listing-file-modified-sort="1705073670799" data-listing-reading-time-sort="1" data-listing-word-count-sort="76" data-listing-title-sort="Glottolog 4.6 data: Agglomerated Endangerment Status" data-listing-filename-sort="glot_status.qmd">
+<td>
+<span class="listing-year">2022</span>
+</td>
+<td>
+<a href="./data/coretta2022/glot_status.html" class="title listing-title">Glottolog 4.6 data: Agglomerated Endangerment Status</a>
+</td>
+<td>
+<span class="listing-author">Stefano Coretta, Harald Hammarström, Robert Forkel, Martin Haspelmath, Sebastian Bank</span>
+</td>
+<td>
+<span class="listing-languages">&nbsp;</span>
+</td>
+<td>
+<span class="listing-population">&nbsp;</span>
+</td>
+</tr>
+<tr data-index="13" data-listing-file-modified-sort="1706807128752" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="V2-Relatives in Old English" data-listing-filename-sort="relatives.qmd">
+<td>
+<span class="listing-year">2023</span>
+</td>
+<td>
+<a href="./data/los2023/relatives.html" class="title listing-title">V2-Relatives in Old English</a>
+</td>
+<td>
+<span class="listing-author">Bettelou Los, Stefano Coretta</span>
+</td>
+<td>
+<span class="listing-languages">Old English</span>
+</td>
+<td>
+<span class="listing-population">&nbsp;</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -14,12 +14,10 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: data.qmd
-        text: Data
 
 format:
   html:
-    theme: united
+    theme: flatly
     css: styles.css
     toc: true
     df-print: paged
