@@ -140,3 +140,12 @@ everywhere_loc <- read_csv("https://osf.io/download/vaujp/?view_only=edba6a22550
 dir.create("./data/sluckin2022/")
 write_csv(everywhere_loc, file = "./data/sluckin2022/everywhere-loc.csv")
 ```
+
+## Zip data
+
+```{r}
+#| label: zip-data
+
+zip("data.zip", "data")
+
+```
