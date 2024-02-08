@@ -1,6 +1,7 @@
 ---
 title: "Data for Quantitative Methods in Linguistics"
 listing:
+  id: data-list
   type: table
   contents: data
   fields: [year, title, author, languages, population]
@@ -15,3 +16,13 @@ format:
 ---
 
 This website contains a curated list of data tables (aka tabular, rectangular, or spreadsheet data) from linguistic studies, which can be used in courses of statistics, quantitative methods and data analysis.
+
+```{=html}
+<a class="btn btn-primary" href="https://uoelel.github.io/qm-data/data.zip" role="button">Download</a>
+<br>
+<br>
+```
+
+
+::: {#data-list}
+:::
