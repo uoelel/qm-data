@@ -77,7 +77,23 @@ dir.create("data/cameron2020/", showWarnings = FALSE)
 write_csv(gestures, "data/cameron2020/gestures.csv")
 ```
 
-## Winter 2020
+## Iosad 2020
+
+The Morphology and dialectology in the Linguistic Survey of Scotland contains a portion of the morphological questionnaire returns collected for the Linguistic Survey of Scotland (Gaelic). The data have been transcribed and coded from questionnaire slips by Will Lamb.
+
+Iosad, Pavel & William Lamb. 2020. Morphology and dialectology in the Linguistic Survey of Scotland. OSF. osf.io/4bp2y.
+
+```{r}
+#| label: gael-morph
+
+gael_morph <- read_csv("https://osf.io/download/h2vub/")
+
+dir.create("data/iosad2020/", showWarnings = FALSE)
+write_csv(gael_morph, "data/iosad2020/gael_morph.csv")
+```
+
+
+## Winter 2012
 
 ```{r}
 #| label: polite

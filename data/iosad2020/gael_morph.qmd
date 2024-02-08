@@ -1,0 +1,12 @@
+---
+title: "Morphology and dialectology in the Linguistic Survey of Scotland"
+author:
+  - Pavel Iosad
+  - Will Lamb
+year: 2020
+population: ["Scottish"]
+languages: ["Gaelic"]
+url: "https://osf.io/download/h2vub/"
+abstract: |
+  The [Morphology and dialectology in the Linguistic Survey of Scotland](https://osf.io/4bp2y) contains a portion of the morphological questionnaire returns collected for the Linguistic Survey of Scotland (Gaelic). The data have been transcribed and coded from questionnaire slips by Will Lamb.
+---
