@@ -18,20 +18,20 @@ library(tidyverse)
 languages <- read_csv("https://raw.githubusercontent.com/glottolog/glottolog-cldf/c8eefe82b4c87f3c566a8e5181bacf714661e18e/cldf/languages.csv")
 values <- read_csv("https://raw.githubusercontent.com/glottolog/glottolog-cldf/c8eefe82b4c87f3c566a8e5181bacf714661e18e/cldf/values.csv")
 
-glot_status <- values %>%
-  filter(Parameter_ID == "aes") %>%
+glot_status <- values |>
+  filter(Parameter_ID == "aes") |>
   mutate(
     status = str_remove(Code_ID, "aes-"),
     status = factor(status, levels = c("not_endangered", "threatened", "shifting", "moribund", "nearly_extinct", "extinct"))
-  ) %>%
+  ) |>
   left_join(y = languages, by = c("Language_ID" = "ID"))
 
 dir.create("./data/coretta2022/", showWarnings = FALSE)
 saveRDS(glot_status, "./data/coretta2022/glot_status.rds")
 
-# glot_med <- values %>%
-#   filter(Parameter_ID == "med") %>%
-#   mutate(MED = str_remove(Code_ID, "med-")) %>%
+# glot_med <- values |>
+#   filter(Parameter_ID == "med") |>
+#   mutate(MED = str_remove(Code_ID, "med-")) |>
 #   left_join(y = languages, by = c("Language_ID" = "ID"))
 ```
 
@@ -40,7 +40,7 @@ saveRDS(glot_status, "./data/coretta2022/glot_status.rds")
 ```{r}
 #| label: formants
 
-f_ita_pol <- read_csv("https://raw.githubusercontent.com/stefanocoretta/coretta2018itapol/master/data-raw/aggregated/formants-series.csv") %>%
+f_ita_pol <- read_csv("https://raw.githubusercontent.com/stefanocoretta/coretta2018itapol/master/data-raw/aggregated/formants-series.csv") |>
   select(everything(), gender = sex)
 
 dir.create("./data/coretta2018/", showWarnings = FALSE)
@@ -51,12 +51,12 @@ write_csv(f_ita_pol, "data/coretta2018/formants.csv")
 ```{r}
 #| label: token-measures
 
-f_mid <- f_ita_pol %>%
-  filter(time == 5) %>%
+f_mid <- f_ita_pol |>
+  filter(time == 5) |>
   select(-time)
 
-token_measures <- read_csv("https://raw.githubusercontent.com/stefanocoretta/coretta2018itapol/master/data-raw/aggregated/token-measures.csv") %>%
-  select(everything(), gender = sex) %>%
+token_measures <- read_csv("https://raw.githubusercontent.com/stefanocoretta/coretta2018itapol/master/data-raw/aggregated/token-measures.csv") |>
+  select(everything(), gender = sex) |>
   left_join(y = f_mid)
 
 write_csv(token_measures, "./data/coretta2018/token-measures.csv")
@@ -70,7 +70,7 @@ Data from *A Cross-Cultural Analysis of Early Prelinguistic Gesture Development 
 ```{r}
 #| label: gestures
 
-gestures <- read_csv("https://raw.githubusercontent.com/stefanocoretta/infant-gestures/master/data/gestures.csv") %>%
+gestures <- read_csv("https://raw.githubusercontent.com/stefanocoretta/infant-gestures/master/data/gestures.csv") |>
   mutate(id = as.numeric(as.factor(paste(dyad, task, gesture))))
 
 dir.create("data/cameron2020/", showWarnings = FALSE)
@@ -99,7 +99,7 @@ write_csv(gael_morph, "data/iosad2020/gael_morph.csv")
 
 suff_pref_en <- read_csv("data/martin2020/data_anonymized/English_anon.csv") |>
   mutate(language = "English")
-suff_pref_ki <- read_csv("data/martin2020/data_anonymized/Kiitharaka_anon.csv") %>%
+suff_pref_ki <- read_csv("data/martin2020/data_anonymized/Kiitharaka_anon.csv") |>
   mutate(language = "Kiitharaka")
 
 suff_pref <- bind_rows(suff_pref_en, suff_pref_ki)
@@ -112,8 +112,8 @@ write_csv(suff_pref, "data/martin2020/suff_pref.csv")
 ```{r}
 #| label: polite
 
-polite <- read_csv("https://raw.githubusercontent.com/learnB4SS/learnB4SS/main/data-raw/polite.csv") %>%
-  arrange(index) %>%
+polite <- read_csv("https://raw.githubusercontent.com/learnB4SS/learnB4SS/main/data-raw/polite.csv") |>
+  arrange(index) |>
   select(-index, -years_in_ger)
 
 dir.create("data/winter2012/", showWarnings = FALSE)
@@ -143,17 +143,17 @@ set.seed(943874)
 
 subj <- sample(unique(dat$Subject), 50)
 
-mald_1_1 <- dat %>%
-  filter(Subject %in% subj, RT > 0) %>%
-  select(Subject, Item, IsWord, PhonLev, RT, ACC) %>%
+mald_1_1 <- dat |>
+  filter(Subject %in% subj, RT > 0) |>
+  select(Subject, Item, IsWord, PhonLev, RT, ACC) |>
   mutate(
     IsWord = factor(IsWord, levels = c("TRUE", "FALSE")),
     ACC = ifelse(ACC, "correct", "incorrect"),
     ACC = factor(ACC, levels = c("incorrect", "correct")),
     RT_log = log(RT)
-  ) %>%
-  group_by(Subject) %>%
-  slice_sample(n = 100) %>%
+  ) |>
+  group_by(Subject) |>
+  slice_sample(n = 100) |>
   ungroup()
 
 saveRDS(mald_1_1, "data/tucker2019/mald_1_1.rds")
@@ -164,7 +164,7 @@ saveRDS(mald_1_1, "data/tucker2019/mald_1_1.rds")
 ```{r}
 #| label: everywhere-loc
 
-everywhere_loc <- read_csv("https://osf.io/download/vaujp/?view_only=edba6a2255044ce6af6a519b85c9e65f") %>%
+everywhere_loc <- read_csv("https://osf.io/download/vaujp/?view_only=edba6a2255044ce6af6a519b85c9e65f") |>
   select(-(Simple:Pass))
 
 dir.create("./data/sluckin2022/")
