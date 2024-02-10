@@ -10,29 +10,18 @@ editor: visual
 library(tidyverse)
 ```
 
-## Coretta 2022
+## Cameron 2020
+
+Data from *A Cross-Cultural Analysis of Early Prelinguistic Gesture Development and Its Relationship to Language Development*.
 
 ```{r}
-#| label: glot-status
+#| label: gestures
 
-languages <- read_csv("https://raw.githubusercontent.com/glottolog/glottolog-cldf/c8eefe82b4c87f3c566a8e5181bacf714661e18e/cldf/languages.csv")
-values <- read_csv("https://raw.githubusercontent.com/glottolog/glottolog-cldf/c8eefe82b4c87f3c566a8e5181bacf714661e18e/cldf/values.csv")
+gestures <- read_csv("https://raw.githubusercontent.com/stefanocoretta/infant-gestures/master/data/gestures.csv") |>
+  mutate(id = as.numeric(as.factor(paste(dyad, task, gesture))))
 
-glot_status <- values |>
-  filter(Parameter_ID == "aes") |>
-  mutate(
-    status = str_remove(Code_ID, "aes-"),
-    status = factor(status, levels = c("not_endangered", "threatened", "shifting", "moribund", "nearly_extinct", "extinct"))
-  ) |>
-  left_join(y = languages, by = c("Language_ID" = "ID"))
-
-dir.create("./data/coretta2022/", showWarnings = FALSE)
-saveRDS(glot_status, "./data/coretta2022/glot_status.rds")
-
-# glot_med <- values |>
-#   filter(Parameter_ID == "med") |>
-#   mutate(MED = str_remove(Code_ID, "med-")) |>
-#   left_join(y = languages, by = c("Language_ID" = "ID"))
+dir.create("data/cameron2020/", showWarnings = FALSE)
+write_csv(gestures, "data/cameron2020/gestures.csv")
 ```
 
 ## Coretta 2018
@@ -63,18 +52,29 @@ write_csv(token_measures, "./data/coretta2018/token-measures.csv")
 
 ```
 
-## Cameron 2020
-
-Data from *A Cross-Cultural Analysis of Early Prelinguistic Gesture Development and Its Relationship to Language Development*.
+## Coretta 2022
 
 ```{r}
-#| label: gestures
+#| label: glot-status
 
-gestures <- read_csv("https://raw.githubusercontent.com/stefanocoretta/infant-gestures/master/data/gestures.csv") |>
-  mutate(id = as.numeric(as.factor(paste(dyad, task, gesture))))
+languages <- read_csv("https://raw.githubusercontent.com/glottolog/glottolog-cldf/c8eefe82b4c87f3c566a8e5181bacf714661e18e/cldf/languages.csv")
+values <- read_csv("https://raw.githubusercontent.com/glottolog/glottolog-cldf/c8eefe82b4c87f3c566a8e5181bacf714661e18e/cldf/values.csv")
 
-dir.create("data/cameron2020/", showWarnings = FALSE)
-write_csv(gestures, "data/cameron2020/gestures.csv")
+glot_status <- values |>
+  filter(Parameter_ID == "aes") |>
+  mutate(
+    status = str_remove(Code_ID, "aes-"),
+    status = factor(status, levels = c("not_endangered", "threatened", "shifting", "moribund", "nearly_extinct", "extinct"))
+  ) |>
+  left_join(y = languages, by = c("Language_ID" = "ID"))
+
+dir.create("./data/coretta2022/", showWarnings = FALSE)
+saveRDS(glot_status, "./data/coretta2022/glot_status.rds")
+
+# glot_med <- values |>
+#   filter(Parameter_ID == "med") |>
+#   mutate(MED = str_remove(Code_ID, "med-")) |>
+#   left_join(y = languages, by = c("Language_ID" = "ID"))
 ```
 
 ## Iosad 2020
@@ -107,20 +107,19 @@ suff_pref <- bind_rows(suff_pref_en, suff_pref_ki)
 write_csv(suff_pref, "data/martin2020/suff_pref.csv")
 ```
 
-## Winter 2012
+## Sluckin 2022
 
 ```{r}
-#| label: polite
+#| label: everywhere-loc
 
-polite <- read_csv("https://raw.githubusercontent.com/learnB4SS/learnB4SS/main/data-raw/polite.csv") |>
-  arrange(index) |>
-  select(-index, -years_in_ger)
+everywhere_loc <- read_csv("https://osf.io/download/vaujp/?view_only=edba6a2255044ce6af6a519b85c9e65f") |>
+  select(-(Simple:Pass))
 
-dir.create("data/winter2012/", showWarnings = FALSE)
-write_csv(polite, "data/winter2012/polite.csv")
+dir.create("./data/sluckin2022/")
+write_csv(everywhere_loc, file = "./data/sluckin2022/everywhere-loc.csv")
 ```
 
-## Tucker 2019: MALD 1.1
+## Tucker 2019
 
 ```{r}
 #| label: mald
@@ -159,16 +158,17 @@ mald_1_1 <- dat |>
 saveRDS(mald_1_1, "data/tucker2019/mald_1_1.rds")
 ```
 
-## Sluckin 2022
+## Winter 2012
 
 ```{r}
-#| label: everywhere-loc
+#| label: polite
 
-everywhere_loc <- read_csv("https://osf.io/download/vaujp/?view_only=edba6a2255044ce6af6a519b85c9e65f") |>
-  select(-(Simple:Pass))
+polite <- read_csv("https://raw.githubusercontent.com/learnB4SS/learnB4SS/main/data-raw/polite.csv") |>
+  arrange(index) |>
+  select(-index, -years_in_ger)
 
-dir.create("./data/sluckin2022/")
-write_csv(everywhere_loc, file = "./data/sluckin2022/everywhere-loc.csv")
+dir.create("data/winter2012/", showWarnings = FALSE)
+write_csv(polite, "data/winter2012/polite.csv")
 ```
 
 ## Zip data
