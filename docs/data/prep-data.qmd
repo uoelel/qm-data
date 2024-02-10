@@ -92,6 +92,20 @@ dir.create("data/iosad2020/", showWarnings = FALSE)
 write_csv(gael_morph, "data/iosad2020/gael_morph.csv")
 ```
 
+## Martin 2020
+
+```{r}
+#| label: suff-pref
+
+suff_pref_en <- read_csv("data/martin2020/data_anonymized/English_anon.csv") |>
+  mutate(language = "English")
+suff_pref_ki <- read_csv("data/martin2020/data_anonymized/Kiitharaka_anon.csv") %>%
+  mutate(language = "Kiitharaka")
+
+suff_pref <- bind_rows(suff_pref_en, suff_pref_ki)
+
+write_csv(suff_pref, "data/martin2020/suff_pref.csv")
+```
 
 ## Winter 2012
 
