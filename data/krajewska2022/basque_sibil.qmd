@@ -1,0 +1,13 @@
+---
+title: "Sibilant mergers in 18th-century Basque: A quantitative study"
+author:
+  - Dorota Krajewska
+  - Eneko Zuloaga
+  - Ander Egurtzegi
+year: 2024
+languages: ["Basque (18th-century)"]
+doi: "10.3765/pda.v4art5.67"
+url: "https://osf.io/download/cmusw/"
+abstract: |
+  Conservative Basque dialects distinguish apical and laminal alveolar sibilants in the fricative and affricate series. This paper analyses the changes this system was undergoing in the Central Basque variety of San Sebastián in the 18th century: (1) the “Western merger”: neutralisation of the laminal and apical fricative sibilants in favour of the latter and the neutralisation of the laminal and apical alveolar affricates in favour of the former, which started in Western Basque and spread to some Central varieties, and (2) the “Central merger”, a more recent development, limited to some central dialects, where both fricative and affricate alveolar sibilants are realised as laminals. A generalised linear mixed-effects model was fitted to the data extracted from an early-18th-century manuscript which shows evidence of both patterns of merger. We propose that sibilant mergers were still in progress in the variety and time period under study and that they are interrelated processes. The Western merger started as a phonetically-conditioned sound change due to coarticulation to a following consonant. As this neutralisation extended to other positions, a hypercorrective change was initiated in some Central varieties, which eventually resulted in a mirror-image process, namely a change from apical to laminal fricatives.
+---
