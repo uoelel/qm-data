@@ -10,6 +10,19 @@ editor: visual
 library(tidyverse)
 ```
 
+## Brentari 2024
+
+Data from *The organization of verb meaning in Lengua de Señas Nicaragüense (LSN): Sequential or simultaneous structures?*
+
+```{r}
+#| label: verb-org
+
+verb_org <- read_csv("https://osf.io/download/g7uq5/", col_select = 1:6)
+
+dir.create("data/brentari2024/", showWarnings = FALSE)
+write_csv(verb_org, "data/brentari2024/verb_org.csv")
+```
+
 ## Cameron 2020
 
 Data from *A Cross-Cultural Analysis of Early Prelinguistic Gesture Development and Its Relationship to Language Development*.
@@ -90,6 +103,17 @@ gael_morph <- read_csv("https://osf.io/download/h2vub/")
 
 dir.create("data/iosad2020/", showWarnings = FALSE)
 write_csv(gael_morph, "data/iosad2020/gael_morph.csv")
+```
+
+## Krajewska 2022
+
+```{r}
+#| label: basque-sibil
+
+basque_sibil <- read_csv("https://osf.io/download/cmusw/")
+
+dir.create("data/krajewska2022/", showWarnings = FALSE)
+write_csv(basque_sibil, "data/krajewska2022/basque_sibil.csv")
 ```
 
 ## Martin 2020

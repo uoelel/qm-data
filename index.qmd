@@ -17,12 +17,18 @@ format:
 
 This website contains a curated list of data tables (aka tabular, rectangular, or spreadsheet data) from linguistic studies, which can be used in courses of statistics, quantitative methods and data analysis.
 
+::: callout-important
+## Help us!
+
+In an effort to improve the Equality, Diversity and Inclusiveness (EDI) of this collection, I am looking for data tables on minoritised and Global South languages and from research by minoritised researchers.
+
+If you have or know of data that qualifies, feel free to get in touch with me (Stefano) at [s.coretta\@ed.ac.uk](mailto:s.coretta@ed.ac.uk){.email}.
+:::
+
 ```{=html}
 <a class="btn btn-primary" href="https://uoelel.github.io/qm-data/data.zip" role="button">Download</a>
 <br>
 <br>
 ```
-
-
 ::: {#data-list}
 :::
