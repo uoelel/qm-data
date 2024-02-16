@@ -11,6 +11,7 @@ project:
 
 website:
   title: "qm-data"
+  favicon: assets/img/favicon.png
   navbar:
     left:
       - href: index.qmd
