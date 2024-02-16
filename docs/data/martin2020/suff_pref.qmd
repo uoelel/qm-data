@@ -1,5 +1,5 @@
 ---
-title: "Second language users exhibit shallow morphological processing"
+title: "Revisiting the Suffixing Preference: Native-Language Affixation Patterns Influence Perception of Sequences"
 author:
   - Martin, Alexander
   - Culbertson, Jennifer
