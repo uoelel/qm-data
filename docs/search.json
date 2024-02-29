@@ -105,6 +105,13 @@
     "text": "The data contains only trials from the Japanese participants.\n\nSubject\n\nParticipant ID.\n\nProcedure\n\nWhether the trial is a practice (PracticeProc) of a test trial (TrialProc).\n\nVersion\n\nTrial version.\n\nContrast\n\nType of contrast (F filler, H homophone, LR /l~r/, P phonological, PB /p~b/).\n\nItem\n\nItem number.\n\nCondition\n\nTrial condition (whether the pair contains Control, Related, or Unrelated words),\n\nWordL\n\nWord shown on the left-side of the screen.\n\nWordR\n\nWord shown on the right-side of the screen.\n\nWords.ACC\n\nWhether the participant correctly identified the pair being related or unrelated.\n\nWords.RT\n\nReaction time of response in milliseconds."
   },
   {
+    "objectID": "data/sluckin2022/everywhere-loc.html",
+    "href": "data/sluckin2022/everywhere-loc.html",
+    "title": "‘Everywhere here can say this’: The English locative impersonal",
+    "section": "",
+    "text": "Manuscript: &lt;https://lingbuzz.net/lingbuzz/006708#:~:text=%27Everywhere%20here%20can%20say%20this,English%20locative%20impersonal%20%2D%20lingbuzz%2F006708&text=For%20many%20speakers%20of%20English,or%20impersonal%20set%20of%20individuals.&gt;"
+  },
+  {
     "objectID": "data/tucker2019/mald_1_1.html",
     "href": "data/tucker2019/mald_1_1.html",
     "title": "Massive Auditory Lexical Decision 1.1",
