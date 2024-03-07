@@ -1,0 +1,11 @@
+---
+title: "Data on vowel formants and duration in Italian"
+author:
+  - Stefano Coretta
+year: 2018
+population: ["Verbano-Cusio-Ossola"]
+languages: ["Italian"]
+url: "https://github.com/stefanocoretta/coretta2018itaegg"
+abstract: |
+  A dataset with duration and formants measures from 19 speakers of Italian.
+---
