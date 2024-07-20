@@ -4,10 +4,6 @@ project:
   execute-dir: project
   render:
     - "*.qmd"
-    - "!data/prep-data.qmd"
-  resources:
-    - "data/"
-    - "data.zip"
 
 website:
   title: "qm-data"
